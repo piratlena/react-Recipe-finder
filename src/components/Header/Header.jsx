@@ -1,8 +1,13 @@
-import './Header.scss'
+import React from 'react';
+import Logo from '../../asstets/img/logo.png';
+import Icons from '../../asstets/img/icons.svg'
+
+
+import './Header.module.scss';
 const Header =() => {
     return (
         <header className="header">
-        <img src="src/img/logo.png" alt="Logo" className="header__logo" />
+        <img src={Logo} alt="Logo" className="header__logo" />
         <form className="search">
           <input
             type="text"
@@ -11,7 +16,7 @@ const Header =() => {
           />
           <button className="btn search__btn">
             <svg className="search__icon">
-              <use href="src/img/icons.svg#icon-search"></use>
+              <use href={`${Icons}#icon-search`}></use>
             </svg>
             <span>Search</span>
           </button>
@@ -22,7 +27,7 @@ const Header =() => {
             <li className="nav__item">
               <button className="nav__btn nav__btn--add-recipe">
                 <svg className="nav__icon">
-                  <use href="src/img/icons.svg#icon-edit"></use>
+                <use href={`${Icons}#icon-edit`}></use>
                 </svg>
                 <span>Add recipe</span>
               </button>
@@ -30,7 +35,7 @@ const Header =() => {
             <li className="nav__item">
               <button className="nav__btn nav__btn--bookmarks">
                 <svg className="nav__icon">
-                  <use href="src/img/icons.svg#icon-bookmark"></use>
+                <use href={`${Icons}#icon-bookmark`}></use>
                 </svg>
                 <span>Bookmarks</span>
               </button>
@@ -39,7 +44,7 @@ const Header =() => {
                   <div className="message">
                     <div>
                       <svg>
-                        <use href="src/img/icons.svg#icon-smile"></use>
+                        <use href={`${Icons}#icon-smile`}></use>
                       </svg>
                     </div>
                     <p>

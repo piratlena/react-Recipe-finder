@@ -1,2 +1,9 @@
 @import './base';
-@import '../components/Header.scss';
+@import './components';
+
+
+@import '../components/Header/Header.module.scss';
+@import '../components/SearchResults/SearchResults.module.scss';
+@import '../components/Preview/Preview.module.scss';
+@import '../components/Recipe/Recipe.module.scss';
+@import '../components/Upload/Upload.module.scss';
