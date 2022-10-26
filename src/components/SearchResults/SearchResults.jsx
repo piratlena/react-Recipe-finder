@@ -1,28 +1,59 @@
-import React from 'react';
+import React, { useContext, useState, useEffect} from 'react';
+import { selectedContext } from '../../App';
 import './SearchResults.module.scss';
-import Preview from '../Preview/Preview';
-import Icons from '../../asstets/img/icons.svg'
+import {Preview} from '../Preview/Preview';
+import Icons from '../../asstets/img/icons.svg';
 
-const SearchResults = () => {
- return (
+
+
+export const SearchResults =({res}) => {
+  const { page, setPage } = useContext(selectedContext);
+  const [newRes, setNewRes] = useState([]);
+  let numPages;
+
+  if (res) {
+    numPages = Math.floor(1 + res.data.recipes.length / 10);
+  }
+  
+  useEffect(() => {
+    if(res) {
+      const start = (page - 1) * 10;
+      const end = page * 10;
+      setNewRes(res.data.recipes.slice(start, end));
+    }
+  }, [res, page])
+
+  return (
     <div className="search-results">
     <ul className="results">
-      <Preview/>
+    {newRes ? (
+            newRes.map((rec, i) => <Preview key={i} data={rec} />)
+          ) : (
+            <></>
+          )}
     </ul>
 
     <div className="pagination">
-    <button className="btn--inline pagination__btn--prev">
+      {page !== 1 ? (<button 
+      onClick={() => setPage((prev) => prev - 1)}
+      className="btn--inline pagination__btn--prev">
         <svg className="search__icon">
           <use href={`${Icons}#icon-arrow-left`}></use>
         </svg>
-        <span>Page 1</span>
-      </button>
-      <button className="btn--inline pagination__btn--next">
-        <span>Page 3</span>
+        <span>{`Page ${page - 1}`}</span></button>) : ('')
+      }
+      
+      {page !== numPages && numPages ? (<button 
+      onClick={() => setPage((prev) => prev + 1)}
+      className="btn--inline pagination__btn--next">
+        <span>{`Page ${page + 1}`}</span>
         <svg className="search__icon">
           <use href={`${Icons}#icon-arrow-right`}></use>
         </svg>
-      </button> 
+      </button>) : ('')
+      }
+      
+    
     </div>
 
     <p className="copyright">
@@ -33,5 +64,5 @@ const SearchResults = () => {
     </p>
   </div>
  )
+
 }
-export default SearchResults;

@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useContext} from "react";
+import { selectedContext } from "../../App";
 import Icons from '../../asstets/img/icons.svg';
 import './Preview.module.scss';
-const Preview = () => {
-return (
+
+
+
+export const  Preview = ({data}) => {
+  const { selected, setSelected} = useContext(selectedContext)
+  return (
     <li className="preview">
-        <a className="preview__link preview__link--active" href="#23456">
+        <a 
+        onClick={() => selected(data.id)}
+        className={`preview__link ${selected === data.id ? 'preview__link--active' : ''} `} href={`#${data.id}`}>
           <figure className="preview__fig">
-            <img src="https://s1.eda.ru/StaticContent/Photos/120131085053/171027192707/p_O.jpg" alt="Test" />
+            <img src={data.image_url} alt="Test" />
           </figure>
           <div className="preview__data">
-            <h4 className="preview__title">Pasta with Tomato Cream ...</h4>
-            <p className="preview__publisher">The Pioneer Woman</p>
+            <h4 className="preview__title">{data.title}</h4>
+            <p className="preview__publisher">{data.publisher}</p>
             <div className="preview__user-generated">
               <svg>
                 <use href={`${Icons}#icon-user`}></use>
@@ -21,4 +28,4 @@ return (
       </li>
 )
 }
-export default Preview;
+
