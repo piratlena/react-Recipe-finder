@@ -3,12 +3,15 @@ import { selectedContext } from '../../App';
 import './SearchResults.module.scss';
 import {Preview} from '../Preview/Preview';
 import Icons from '../../asstets/img/icons.svg';
+import Skeleton from '../Skeleton/Skeleton';
 
 
 
 export const SearchResults =({res}) => {
-  const { page, setPage } = useContext(selectedContext);
+  const { page, setPage, isLoading } = useContext(selectedContext);
   const [newRes, setNewRes] = useState([]);
+  const skeleton = [...new Array(10)].map((_, i) => <Skeleton key={i}/>);
+  const viewResult = newRes.map((rec, i) => <Preview key={i} data={rec} />)
   let numPages;
 
   if (res) {
@@ -26,11 +29,9 @@ export const SearchResults =({res}) => {
   return (
     <div className="search-results">
     <ul className="results">
-    {newRes ? (
-            newRes.map((rec, i) => <Preview key={i} data={rec} />)
-          ) : (
-            <></>
-          )}
+       {
+        isLoading ?  [...new Array(10)].map((_, i) => <Skeleton key={i}/>) : (newRes.map((rec, i) => <Preview key={i} data={rec} />)) 
+       }
     </ul>
 
     <div className="pagination">

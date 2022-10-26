@@ -8,12 +8,13 @@ import UpdateRecipe from '../SearchResults/SearchResults';
 
 
 export const Header = () => {
-  const {setPage, setResults} = useContext(selectedContext);
+  const {setPage, setResults, isLoading, setIsLoading} = useContext(selectedContext);
   const [search, setSearch] = useState('')
   const [searchValue, setSearchValue] = useState();
   
  useEffect(() => {
   if (!searchValue && searchValue !== '') return
+  setIsLoading(true)
   fetch(`${ApiBase}?search=${searchValue}&${API_KEY}`)
   .then((res) => 
     res
@@ -22,6 +23,7 @@ export const Header = () => {
       console.log(re)
       setResults(re);
       setSearchValue(undefined);
+      setIsLoading(false)
       if (re.status === 'fail') throw new Error(`${re.message}`)
     })
    

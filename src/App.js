@@ -8,6 +8,7 @@ import Preview from "./components/Preview/Preview";
 import RES_PER_PAGE from "./services/ResipeService";
 import _apiBase from './services/ResipeService';
 import apiKey from './services/ResipeService';
+import { Skeleton } from "./components/Skeleton/Skeleton";
 
 export const selectedContext = createContext()
 
@@ -15,6 +16,7 @@ export const App = () => {
   const [results, setResults] = useState();
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState();
+  const [isLoading, setIsLoading] = React.useState(false);
   const [spinner, setSpinner] = useState({
     search: false,
     recipe: false,
@@ -29,7 +31,9 @@ export const App = () => {
     selected,
     setSelected,
     spinner,
-    setSpinner
+    setSpinner,
+    isLoading,
+    setIsLoading
   }
 
 

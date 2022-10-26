@@ -10,7 +10,7 @@ export const  Preview = ({data}) => {
   return (
     <li className="preview">
         <a 
-        onClick={() => selected(data.id)}
+        onClick={() => setSelected(data.id)}
         className={`preview__link ${selected === data.id ? 'preview__link--active' : ''} `} href={`#${data.id}`}>
           <figure className="preview__fig">
             <img src={data.image_url} alt="Test" />
