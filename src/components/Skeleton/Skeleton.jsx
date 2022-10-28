@@ -12,7 +12,7 @@ const Skeleton = (props) => {
     foregroundColor="#dedede"
     {...props}
   >
-    <circle cx="52" cy="46" r="30" /> 
+    <circle cx="60" cy="46" r="29" /> 
     <rect x="107" y="21" rx="8" ry="8" width="250" height="23" /> 
     <rect x="109" y="59" rx="8" ry="8" width="194" height="18" />
   </ContentLoader>

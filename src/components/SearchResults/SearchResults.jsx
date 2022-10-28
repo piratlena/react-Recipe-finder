@@ -8,10 +8,8 @@ import Skeleton from '../Skeleton/Skeleton';
 
 
 export const SearchResults =({res}) => {
-  const { page, setPage, isLoading } = useContext(selectedContext);
+  const { page, setPage, isLoading, setIsLoading } = useContext(selectedContext);
   const [newRes, setNewRes] = useState([]);
-  const skeleton = [...new Array(10)].map((_, i) => <Skeleton key={i}/>);
-  const viewResult = newRes.map((rec, i) => <Preview key={i} data={rec} />)
   let numPages;
 
   if (res) {

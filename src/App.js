@@ -1,14 +1,9 @@
 import React, { createContext, useEffect, useState } from "react";
-import { Component } from "react";
 import {Header} from "./components/Header/Header";
 import {SearchResults} from "./components/SearchResults/SearchResults";
-import Recipe from "./components/Recipe/Recipe";
+import {Recipe} from "./components/Recipe/Recipe";
 import Upload from "./components/Upload/Upload";
-import Preview from "./components/Preview/Preview";
-import RES_PER_PAGE from "./services/ResipeService";
-import _apiBase from './services/ResipeService';
-import apiKey from './services/ResipeService';
-import { Skeleton } from "./components/Skeleton/Skeleton";
+
 
 export const selectedContext = createContext()
 
@@ -16,6 +11,9 @@ export const App = () => {
   const [results, setResults] = useState();
   const [page, setPage] = useState(1);
   const [selected, setSelected] = useState();
+  const [bookMarked, setBookMarked] = useState( localStorage.getItem("bookmarked")
+  ? JSON.parse(localStorage.getItem("bookmarked"))
+  : [])
   const [isLoading, setIsLoading] = React.useState(false);
   const [spinner, setSpinner] = useState({
     search: false,
@@ -33,7 +31,9 @@ export const App = () => {
     spinner,
     setSpinner,
     isLoading,
-    setIsLoading
+    setIsLoading,
+    bookMarked,
+    setBookMarked,
   }
 
 
