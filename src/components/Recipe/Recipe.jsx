@@ -3,7 +3,9 @@ import { selectedContext } from "../../App";
 import './Recipe.module.scss';
 import Icons from '../../asstets/img/icons.svg';
 import {ApiBase, API_KEY} from '../../services/ResipeService'
-import Error from "../Messages/Error";
+import {Start} from "../Messages/Start";
+import {Spinner} from '../Messages/Spinner';
+import {NoResults} from '../Messages/NoResults';
 
 export const Recipe = () => {
 
@@ -11,12 +13,17 @@ export const Recipe = () => {
     selected,
     setSelected,
     bookMarked,
-    setBookMarked
+    setBookMarked,
+    resultInfo,
+    beginSpinner,
+    stopSpinner
   } = useContext(selectedContext);
 
   const [recipe, setRecipe] = useState();
   const [serving, setServing] = useState('');
   const id = window.location.hash.slice(1);
+ 
+
 
   useEffect(() => {
     if (!selected) setSelected(id);
@@ -26,25 +33,23 @@ export const Recipe = () => {
     if(!selected) return
     document.location.href = `/#${selected}`;
     fetch(`${ApiBase}/${selected}?${API_KEY}`)
-    .then((res) =>
-    res
-      .json()
-      .then((re) => {
-        if (re.status === "fail") throw new Error(`Error`);
-       console.log(re)
-        setRecipe(re.data.recipe);
-        console.log(recipe.ingredients)
-        setServing(re.data.recipe.servings);
+    .then((res) => res.json())
+    .then((obj) => {
+        if (obj.status === "fail") throw new Error(`Error`);
+        setRecipe(obj.data.recipe);
+        setServing(obj.data.recipe.servings);
       })
-  );
 }, [selected]);
 
+
     return (
-        <div className="recipe">
-    
-
- 
-
+    <div className="recipe">
+    {resultInfo.recipe ? (
+      <div className="spinner"><Spinner/></div>) : !recipe ? (
+      <div className="message"><NoResults/></div>)
+    : (
+      <>
+      
     <figure className="recipe__fig">
       <img src={recipe.image_url}alt="Tomato" className="recipe__img" />
       <h1 className="recipe__title">
@@ -107,16 +112,17 @@ export const Recipe = () => {
             <use href={`${Icons}#icon-check`}></use>
           </svg>
           <div className="recipe__quantity">{
-            ing.quantity ? (ing.quantity * serving) / recipe.servings : ''}</div>
+            ing.quantity ? (ing.quantity * serving) / recipe.servings : ''
+          }</div>
           <div className="recipe__description">
             <span className="recipe__unit">{ing.unit}</span>
             {ing.description}
           </div>
         </li>
-          )
-        })}
-      
-      </ul>
+        )
+      })}
+        
+          </ul>
     </div>
 
     <div className="recipe__directions">
@@ -139,7 +145,10 @@ export const Recipe = () => {
         </svg>
       </a>
     </div>
-    
-  </div>
+      </>
+    )
+    }
+
+   </div>
     )
 }

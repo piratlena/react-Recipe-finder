@@ -1,7 +1,7 @@
 import React from "react";
 import '../../styles/_base.scss';
 import Icons from '../../asstets/img/icons.svg'
-const Error = () => {
+export const NoResults = () => {
     return (
         <div className="error">
         <div>
@@ -12,5 +12,4 @@ const Error = () => {
         <p>No recipes found for your query. Please try again!</p>
       </div> 
     )
-}
-export default Error;
+};

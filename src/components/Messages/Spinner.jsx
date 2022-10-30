@@ -1,7 +1,7 @@
 import React from "react";
 import '../../styles/_base.scss';
 import Icons from '../../asstets/img/icons.svg'
-const Spinner = () => {
+export const Spinner = () => {
     return (
         <div className="spinner">
         <svg>
@@ -9,5 +9,4 @@ const Spinner = () => {
         </svg>
       </div> 
     )
-}
-export default Spinner;
+};

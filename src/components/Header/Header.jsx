@@ -16,20 +16,16 @@ export const Header = () => {
   if (!searchValue && searchValue !== '') return
   setIsLoading(true)
   fetch(`${ApiBase}?search=${searchValue}&${API_KEY}`)
-  .then((res) => 
-    res
-    .json()
-    .then((re) => {
-      console.log(re)
-      setResults(re);
+  .then((res) => res.json())
+    .then((obj) => {
+      setResults(obj);
       setSearchValue(undefined);
       setIsLoading(false)
-      if (re.status === 'fail') throw new Error(`${re.message}`)
+      if (obj.status === 'fail') throw new Error(`${obj.message}`)
     })
-   
-  )
   setSearch('')
  }, [searchValue,setResults])
+ 
   return (
     <header className="header">
     <img src={Logo} alt="Logo" className="header__logo" />

@@ -15,11 +15,22 @@ export const App = () => {
   ? JSON.parse(localStorage.getItem("bookmarked"))
   : [])
   const [isLoading, setIsLoading] = React.useState(false);
-  const [spinner, setSpinner] = useState({
+  const [resultInfo, setResultInfo] = useState({
     search: false,
     recipe: false,
     modal: false
   });
+
+  const beginSpinner = (view) => {
+    setResultInfo((prev) => {
+      return { ...prev, [view]: true };
+    });
+  };
+  const stopSpinner = (view) => {
+    setResultInfo((prev) => {
+      return { ...prev, [view]: false };
+    });
+  };
 
   const value = {
     results,
@@ -28,12 +39,14 @@ export const App = () => {
     setPage,
     selected,
     setSelected,
-    spinner,
-    setSpinner,
+    resultInfo,
+    setResultInfo,
     isLoading,
     setIsLoading,
     bookMarked,
     setBookMarked,
+    beginSpinner,
+    stopSpinner
   }
 
 

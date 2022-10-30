@@ -1,7 +1,8 @@
 import React from "react";
 import '../../styles/_base.scss';
 import Icons from '../../asstets/img/icons.svg'
-const Start = () => {
+
+export const Start = () => {
     return (
       <div className="message">
         <div>
@@ -14,4 +15,3 @@ const Start = () => {
        
     )
 }
-export default Start;
