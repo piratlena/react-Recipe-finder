@@ -31,11 +31,13 @@ export const Recipe = () => {
 
   useEffect(() => {
     if(!selected) return
+    beginSpinner("recipe");
     document.location.href = `/#${selected}`;
     fetch(`${ApiBase}/${selected}?${API_KEY}`)
     .then((res) => res.json())
     .then((obj) => {
         if (obj.status === "fail") throw new Error(`Error`);
+        stopSpinner("recipe");
         setRecipe(obj.data.recipe);
         setServing(obj.data.recipe.servings);
       })
@@ -45,8 +47,8 @@ export const Recipe = () => {
     return (
     <div className="recipe">
     {resultInfo.recipe ? (
-      <div className="spinner"><Spinner/></div>) : !recipe ? (
-      <div className="message"><NoResults/></div>)
+      <NoResults/>) : !recipe ? (
+      <Start/>)
     : (
       <>
       
@@ -146,8 +148,7 @@ export const Recipe = () => {
       </a>
     </div>
       </>
-    )
-    }
+    )}
 
    </div>
     )
