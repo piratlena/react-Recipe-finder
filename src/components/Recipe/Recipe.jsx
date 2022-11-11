@@ -47,7 +47,7 @@ export const Recipe = () => {
     return (
     <div className="recipe">
     {resultInfo.recipe ? (
-      <NoResults/>) : !recipe ? (
+      <Spinner/>) : !recipe ? (
       <Start/>)
     : (
       <>

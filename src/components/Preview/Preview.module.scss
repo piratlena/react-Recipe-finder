@@ -26,6 +26,11 @@
     &__fig {
       flex: 0 0 5.8rem;
       border-radius: 50%;
+       border: 2px solid #0000;
+       
+       background:
+     linear-gradient(#fff,#fff) padding-box,
+     linear-gradient(#F53844, #e4fd02) border-box;
       overflow: hidden;
       height: 5.8rem;
       margin-right: 2rem;
@@ -63,7 +68,7 @@
     &__title {
       grid-column: 1/-1;
       font-size: 1.45rem;
-      color: $color-grad-1;
+      color: $color-grey-dark-2;
       text-transform: uppercase;
       font-weight: 600;
   

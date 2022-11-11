@@ -4,11 +4,12 @@ import './SearchResults.module.scss';
 import {Preview} from '../Preview/Preview';
 import Icons from '../../asstets/img/icons.svg';
 import Skeleton from '../Skeleton/Skeleton';
+import { Spinner } from '../Messages/Spinner';
 
 
 
 export const SearchResults =({res}) => {
-  const { page, setPage, isLoading, setIsLoading } = useContext(selectedContext);
+  const { page, setPage, isLoading, resultInfo } = useContext(selectedContext);
   const [newRes, setNewRes] = useState([]);
   let numPages;
 
@@ -26,11 +27,22 @@ export const SearchResults =({res}) => {
 
   return (
     <div className="search-results">
-    <ul className="results">
-       {
-        isLoading ?  [...new Array(10)].map((_, i) => <Skeleton key={i}/>) : (newRes.map((rec, i) => <Preview key={i} data={rec} />)) 
-       }
-    </ul>
+       {res?.data.recipes.length === 0 && (
+        <div className="error">
+          <p>No recipes found for your query! Please try another one!</p>
+        </div>
+      )}
+
+{resultInfo.search ? (
+        <div className="spinner">
+          <Spinner />
+        </div>
+      ) : ( <ul className="results">
+      {
+       isLoading ?  [...new Array(10)].map((_, i) => <Skeleton key={i}/>) : (newRes.map((rec, i) => <Preview key={i} data={rec} />)) 
+      }
+   </ul>)}
+
 
     <div className="pagination">
       {page !== 1 ? (<button 

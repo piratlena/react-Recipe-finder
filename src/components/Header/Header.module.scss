@@ -8,10 +8,13 @@
   align-items: center;
   justify-content: space-between;
 
-  &__logo {
-    margin-left: 4rem;
+   svg {
+    margin-left: 6rem;
     height: 4.6rem;
     display: block;
+    path {
+      fill: $color-grey-dark-2;
+    }
   }
 }
 

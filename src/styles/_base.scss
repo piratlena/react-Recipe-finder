@@ -1,6 +1,7 @@
-$color-primary: #9be15d;
-$color-grad-1: #45b962;
-$color-grad-2:  #9be15d;;
+$color-primary: #33dd4e;
+$color-grad-1:  #5dfa86;
+$color-grad-2:  #33dd4e;
+$color-grad-3: #e4fd02;
 
 $color-grey-light-1: #f8f9f3; // Light background
 $color-grey-light-2: #f2efee; // Light lines
@@ -8,8 +9,9 @@ $color-grey-light-3: #d3c7c3; // Light text (placeholder)
 $color-grey-dark-1: #615551; // Normal text
 $color-grey-dark-2: #918581; // Lighter text
 
-$gradient: linear-gradient(to right bottom, $color-grad-1, $color-grad-2);
-$gradient1: linear-gradient(to right bottom, $color-grad-2, $color-grad-2);
+$gradient: linear-gradient(90deg, $color-grad-3 0%, $color-grad-2 50%, $color-grad-1 100%);
+$gradient1: linear-gradient(to right bottom, $color-grad-2, $color-grad-2,50% $color-grad-3);
+$gradient2:  linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
 
 $bp-large: 78.15em; // 1250px
 $bp-medium: 61.25em; // 980px
@@ -41,7 +43,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: $color-grey-dark-1;
-  background-image: $gradient1, .5;
+  background-image: $gradient2 .5;
   background-size: cover;
   background-repeat: no-repeat;
   min-height: calc(100vh - 2 * 4vw);

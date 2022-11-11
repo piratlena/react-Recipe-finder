@@ -28,7 +28,7 @@
       width: 100%;
       display: block;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
   
     &__title {
@@ -48,11 +48,7 @@
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
         padding: 1.3rem 2rem;
-        background-image: linear-gradient(
-          to right bottom,
-          $color-grad-1,
-          $color-grad-2
-        );
+        background-image: linear-gradient(90deg, $color-grad-3 0%, $color-grad-2 50%, $color-grad-1 100%);
       }
   
       @media only screen and (max-width: $bp-medium) {
