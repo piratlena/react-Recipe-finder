@@ -15,6 +15,7 @@ export const App = () => {
   ? JSON.parse(localStorage.getItem("bookmarked"))
   : []);
   const [openModal, setOpenModal] = useState(false);
+  const [recipeCreated, setRecipeCreated] = useState();
   const [isLoading, setIsLoading] = React.useState(false);
   const [resultInfo, setResultInfo] = useState({
     search: false,
@@ -49,7 +50,9 @@ export const App = () => {
     beginSpinner,
     stopSpinner,
     openModal,
-    setOpenModal
+    setOpenModal,
+    recipeCreated,
+    setRecipeCreated
   }
 
 

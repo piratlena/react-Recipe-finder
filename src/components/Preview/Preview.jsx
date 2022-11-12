@@ -20,11 +20,16 @@ export const  Preview = ({data}) => {
           <div className="preview__data">
             <h4 className="preview__title">{data.title}</h4>
             <p className="preview__publisher">{data.publisher}</p>
-            <div className="preview__user-generated">
-              <svg>
-                <use href={`${Icons}#icon-user`}></use>
-              </svg>
-            </div>
+            {
+              data.key ? (
+                <div className="preview__user-generated">
+                <svg>
+                  <use href={`${Icons}#icon-user`}></use>
+                </svg>
+              </div>
+              ) : ('')
+            }
+          
           </div>
         </a>
       </li>
