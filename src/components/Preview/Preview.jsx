@@ -12,9 +12,11 @@ export const  Preview = ({data}) => {
         <a 
         onClick={() => setSelected(data.id)}
         className={`preview__link ${selected === data.id ? 'preview__link--active' : ''} `} href={`#${data.id}`}>
+          <div className="preview__circle">
           <figure className="preview__fig">
             <img src={data.image_url} alt="Test" />
           </figure>
+          </div>
           <div className="preview__data">
             <h4 className="preview__title">{data.title}</h4>
             <p className="preview__publisher">{data.publisher}</p>

@@ -13,7 +13,8 @@ export const App = () => {
   const [selected, setSelected] = useState();
   const [bookMarked, setBookMarked] = useState( localStorage.getItem("bookmarked")
   ? JSON.parse(localStorage.getItem("bookmarked"))
-  : [])
+  : []);
+  const [openModal, setOpenModal] = useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [resultInfo, setResultInfo] = useState({
     search: false,
@@ -46,7 +47,9 @@ export const App = () => {
     bookMarked,
     setBookMarked,
     beginSpinner,
-    stopSpinner
+    stopSpinner,
+    openModal,
+    setOpenModal
   }
 
 

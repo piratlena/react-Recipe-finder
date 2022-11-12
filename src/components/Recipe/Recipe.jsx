@@ -22,6 +22,7 @@ export const Recipe = () => {
   const [recipe, setRecipe] = useState();
   const [serving, setServing] = useState('');
   const id = window.location.hash.slice(1);
+  const check = bookMarked?.some((marked) => marked.recipe.id === id);
  
 
 
@@ -97,10 +98,28 @@ export const Recipe = () => {
           <use href={`${Icons}#icon-user`}></use>
         </svg>
       </div>
-      <button className="btn--round">
-        <svg className="">
-          <use href={`${Icons}#icon-bookmark-fill`}></use>
-        </svg>
+      <button 
+      className="btn--round"
+      onClick={() => {
+        if(!check) {
+          setBookMarked((prev) => {
+            return [...prev, {recipe, id: recipe.id}]
+          })
+        } else {
+          setBookMarked((prev) => {
+            return prev.filter((item) => item.id !== id)
+          })
+        }
+      }}
+      >
+        {check ?
+        (<svg className="">
+        <use href={`${Icons}#icon-bookmark`}></use>
+      </svg>) :
+      (<svg className="">
+      <use href={`${Icons}#icon-bookmark-fill`}></use>
+    </svg>)}
+        
       </button>
     </div>
 

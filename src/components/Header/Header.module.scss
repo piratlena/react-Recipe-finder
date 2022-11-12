@@ -8,10 +8,23 @@
   align-items: center;
   justify-content: space-between;
 
-   svg {
-    margin-left: 6rem;
-    height: 4.6rem;
+  &__logo {
     display: block;
+    border-radius: 50%;
+    padding: 5px;
+    height: 6rem;
+    width: 6rem;
+    margin-left: 6rem;
+    align-items: center;
+    border: 2px solid #0000;
+       
+    background:
+  linear-gradient(#f8f9f3,#f8f9f3) padding-box,
+  linear-gradient(#33dd4e, #e4fd02) border-box;
+  }
+
+   svg {
+    height: 4.6rem;
     path {
       fill: $color-grey-dark-2;
     }

@@ -22,18 +22,35 @@
         background-color: $color-grey-light-1;
       }
     }
+
+    &__circle {
+      width: 6.2rem;
+      height: 6.2rem;
+      display: block;
+      border-radius: 50%;
+      border: 2px solid #0000;
+      background:
+    linear-gradient(#fff,#fff) padding-box,
+     linear-gradient(#F53844, #e4fd02) border-box;
+      margin-right: 2rem;
+      position: relative;
+      backface-visibility: hidden;
+      align-items: center;
+  
+    }
   
     &__fig {
-      flex: 0 0 5.8rem;
       border-radius: 50%;
-       border: 2px solid #0000;
-       
-       background:
-     linear-gradient(#fff,#fff) padding-box,
-     linear-gradient(#F53844, #e4fd02) border-box;
+      border: 2px solid #0000;
+      top: 50%;
+      transform: translateY(-50%);
+      background:
+      linear-gradient(#fff,#fff) padding-box,
+      linear-gradient(#fff, #fff) border-box;
+
       overflow: hidden;
       height: 5.8rem;
-      margin-right: 2rem;
+      width: 5.8rem;
       position: relative;
       backface-visibility: hidden;
   
